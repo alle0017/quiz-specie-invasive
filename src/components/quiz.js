@@ -1,5 +1,6 @@
 import { $effect, $signal, html, } from "gloomjs";
 import Question from "./question";
+import ProgressBar from "./progress-bar";
 
 
 /**
@@ -44,7 +45,7 @@ export default function Quiz({ questions, end }){
 
       return html`
             <div style="display: grid; align-content: center; justify-content: center;">
-                  <ProgressBar tot=${questions.length} curr=${index} color="var(--primary-color)" />
+                  <${ProgressBar({ tot: questions.length, curr: index, color:"var(--primary-color)" })}/>
             </div>
             
             <div style="margin-top: 50px;">

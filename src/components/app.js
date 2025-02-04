@@ -1,5 +1,8 @@
 import { html, $signal, $effect } from "gloomjs";
 import { Doves, Exotics } from "../questions";
+import Quiz from "./quiz";
+import Statistics from "./statistics";
+
 /**
  * @param {number} num 
  */
@@ -67,15 +70,12 @@ export default function App(){
       const showResults = $signal(false);
       const Page = $effect( () => {
             if( showResults.value ){
-                  return html`
-                        <Statistics questions=${questions} wrong=${wrongAnswers} end=${reloadQuiz} start=${start} />
-                  `
+                  return Statistics({ questions, wrong:  wrongAnswers, end: reloadQuiz, start });
             }
-            questions = generateQuestions( 5 );
+            questions = generateQuestions( 20 );
             start = Date.now();
-            return html`
-                  <Quiz questions=${questions} end=${analyzeWrong}/>
-            `
+            //@ts-ignore
+            return Quiz({ questions, end: analyzeWrong })
       }, showResults )
 
       return html`
