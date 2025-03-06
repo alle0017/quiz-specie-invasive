@@ -1,5 +1,5 @@
 import { html, $signal, $effect } from "gloomjs";
-import { Doves, Exotics } from "../questions";
+import { Doves, Exotics, Fox, Rabbit } from "../questions";
 import Quiz from "./quiz";
 import Statistics from "./statistics";
 
@@ -46,7 +46,9 @@ function generateFromGroup( group, num ){
 function generateQuestions( questionForGroup ){
       return [
             ...generateFromGroup( Doves, questionForGroup ),
-            ...generateFromGroup( Exotics, questionForGroup )
+            ...generateFromGroup( Exotics, questionForGroup ),
+            ...generateFromGroup( Fox, questionForGroup ),
+            ...generateFromGroup( Rabbit, questionForGroup ),
       ];
 }
 
